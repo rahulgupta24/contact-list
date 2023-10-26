@@ -1,0 +1,105 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+h1 {
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+.contact {
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact h3 {
+  margin: 0;
+  color: #007bff;
+}
+
+.contact button {
+  padding: 5px 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.contact button:hover {
+  background-color: #d50000;
+}
+
+/* Edit mode styles */
+.contact.editing {
+  background-color: #f2f2f2;
+}
+
+.contact.editing input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.contact.editing button {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.contact.editing button.save {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.contact.editing button.cancel {
+  background-color: #f44336;
+  color: #fff;
+}
