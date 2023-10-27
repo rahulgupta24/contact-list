@@ -1,75 +1,66 @@
-# Calculator and Contact List React App
+ Contact List application:
 
-This is a simple React application that includes two components: a realistic calculator and a contact list. The calculator allows you to perform basic arithmetic operations, and the contact list allows you to manage a list of contacts. The contact list interacts with a mock API to perform basic CRUD (Create, Read, Update, Delete) operations on contacts.
+# Contact List App
 
-## Calculator
+The Contact List App is a simple web application for managing your contacts. It allows you to view, add, update, and delete contact information. This application uses React to build the front-end and fetches data from a JSON API to simulate real contact management.
 
-### Features
+![Contact List App Screenshot](screenshot.png)
 
-- Perform basic arithmetic operations: addition, subtraction, multiplication, and division.
-- Clear the input and result.
-- Calculate and display the result.
-- Handle errors in case of invalid expressions.
-- Added a backspace (delete) button for removing the last character.
+## Features
 
-### Usage
+- View a list of contacts.
+- Add a new contact with a name, email, and phone number.
+- Update contact information.
+- Delete a contact.
 
-1. Clone this repository to your local machine:
+## Installation
 
-   ```bash
-   git clone <repository-url>
-   ```
+1. Clone the repository to your local machine.
 
-2. Navigate to the project directory:
+```bash
+git clone https://github.com/yourusername/contact-list-app.git
+```
 
-   ```bash
-   cd <project-directory>
-   ```
+2. Change to the project directory.
 
-3. Install the required dependencies:
+```bash
+cd contact-list-app
+```
 
-   ```bash
-   npm install
-   ```
+3. Install dependencies using npm or yarn.
 
-4. Start the development server:
+```bash
+npm install
+# or
+yarn install
+```
 
-   ```bash
-   npm start
-   ```
+4. Start the development server.
 
-5. Open your web browser and visit `http://localhost:3000` to use the calculator.
+```bash
+npm start
+# or
+yarn start
+```
 
-## Contact List
+The application will be running on [http://localhost:3000](http://localhost:3000).
 
-### Features
+## Usage
 
-- Fetch a list of contacts from a mock API (JSONPlaceholder) when the component mounts.
-- Add new contacts and display them in the list.
-- Update existing contacts.
-- Delete contacts.
+1. Visit [http://localhost:3000](http://localhost:3000) in your web browser to use the Contact List App.
 
-### Usage
+2. You can view the list of contacts, add new contacts, update existing contact information, and delete contacts.
 
-1. Clone this repository to your local machine (if you haven't already).
+## API Information
 
-2. Navigate to the project directory (if you're not already there).
-
-3. Install the required dependencies (if you haven't already).
-
-4. Start the development server (if you haven't already).
-
-5. Open your web browser and visit `http://localhost:3000` to access the Contact List.
-
-### Note
-
-- The contact data is fetched from the JSONPlaceholder API, so you need an internet connection to fetch and update contact data.
-- This is a front-end-only application, and the data is not permanently stored. It's used for demonstration and learning purposes.
+The application fetches contact data from a JSON API. It simulates contact management operations. The API endpoint used is [JSONPlaceholder](https://jsonplaceholder.typicode.com/users). Keep in mind that this API does not store data permanently, and any changes you make will not persist.
 
 ## Contributing
 
-Feel free to contribute to this project by opening issues or creating pull requests.
+Contributions are welcome! If you'd like to improve or expand the features of this application, feel free to submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License -.
+This project is licensed under the MIT License. 
+```
+

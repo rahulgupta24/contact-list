@@ -1,78 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import Contact from './Contact'; // Import the Contact component
+import Contact from './Contact';
 import '../styles.css';
 
 const ContactList = () => {
-    const [contacts, setContacts] = useState([]); // Define a state variable for storing contacts
-    const [newContact, setNewContact] = useState({ name: '', email: '', phone: '' }); // Define a state variable for a new contact form
+    const [contacts, setContacts] = useState([]);
+    const [newContact, setNewContact] = useState({ name: '', email: '', phone: '' });
 
     useEffect(() => {
-        // Use the useEffect hook to fetch contacts from an API when the component mounts
+        // Fetch contacts from the API when the component mounts
         fetch('https://jsonplaceholder.typicode.com/users')
             .then((response) => response.json())
-            .then((data) => setContacts(data)); // Update the state with the fetched contacts
-    }, []); // The empty dependency array ensures this effect runs only once when the component mounts
+            .then((data) => setContacts(data))
+            .catch((error) => console.error(error));
+    }, []);
+
+    const generateUniqueID = () => {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    };
 
     const handleAddContact = () => {
-        // Function to add a new contact
-        // Make a POST request to add a new contact (dummy request)
-        fetch('https://jsonplaceholder.typicode.com/users', {
-            method: 'POST',
-            body: JSON.stringify(newContact),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Update the state with the new contact and clear the form
-                setContacts([...contacts, data]);
-                setNewContact({ name: '', email: '', phone: '' });
-            });
+        // Generate a unique ID for the newly added contact
+        const newContactWithID = { ...newContact, id: generateUniqueID() };
+        const updatedContacts = [...contacts, newContactWithID];
+        setContacts(updatedContacts);
+
+        // Clear the form and trigger a re-render
+        setNewContact({ name: '', email: '', phone: '' });
     };
 
     const handleUpdateContact = (updatedContact) => {
-        // Function to update an existing contact
-        fetch(`https://jsonplaceholder.typicode.com/users/${updatedContact.id}`, {
-            method: 'PUT',
-            body: JSON.stringify(updatedContact),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to update contact');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                // Update the state with the updated contact
-                setContacts(
-                    contacts.map((contact) =>
-                        contact.id === data.id ? { ...contact, ...data } : contact
-                    )
-                );
-            })
-            .catch((error) => console.error(error));
+        const updatedContacts = contacts.map((contact) =>
+            contact.id === updatedContact.id ? { ...contact, ...updatedContact } : contact
+        );
+        setContacts(updatedContacts);
     };
 
     const handleDeleteContact = (contactId) => {
-        // Function to delete a contact
-        fetch(`https://jsonplaceholder.typicode.com/users/${contactId}`, {
-            method: 'DELETE',
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to delete contact');
-                }
-                return response.json();
-            })
-            .then(() => {
-                // Update the state by filtering out the deleted contact
-                setContacts(contacts.filter((contact) => contact.id !== contactId));
-            })
-            .catch((error) => console.error(error));
+        const updatedContacts = contacts.filter((contact) => contact.id !== contactId);
+        setContacts(updatedContacts);
     };
 
     return (
