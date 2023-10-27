@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 import '../styles.css';
 
 const Contact = ({ contact, onDelete, onUpdate }) => {
-    // State to track whether the contact is in edit mode or not
     const [isEditing, setEditing] = useState(false);
+    const [editedContact, setEditedContact] = useState(contact); // Initialize editedContact with the contact prop
 
-    // State to store the edited contact information
-    const [editedContact, setEditedContact] = useState(contact);
-
-    // Function to handle saving the edited contact
     const handleSave = () => {
-        onUpdate(editedContact); // Call the parent component's update function
-        setEditing(false); // Exit edit mode
+        onUpdate(editedContact);
+        setEditing(false);
     };
 
     return (
         <div className="contact">
-            {isEditing ? ( // Check if the contact is in edit mode
+            {isEditing ? (
                 <div>
                     <input
                         type="text"
@@ -33,15 +29,15 @@ const Contact = ({ contact, onDelete, onUpdate }) => {
                         value={editedContact.phone}
                         onChange={(e) => setEditedContact({ ...editedContact, phone: e.target.value })}
                     />
-                    <button onClick={handleSave}>Save</button> {/* Save button to save changes */}
+                    <button onClick={handleSave}>Save</button>
                 </div>
             ) : (
                 <div>
-                    <h3>{contact.name}</h3>
-                    <p>Email: {contact.email}</p>
-                    <p>Phone: {contact.phone}</p>
-                    <button onClick={() => setEditing(true)}>Edit</button> {/* Edit button to enter edit mode */}
-                    <button onClick={() => onDelete(contact.id)}>Delete</button> {/* Delete button to delete the contact */}
+                    <h3>{editedContact.name}</h3>
+                    <p>Email: {editedContact.email}</p>
+                    <p>Phone: {editedContact.phone}</p>
+                    <button onClick={() => setEditing(true)}>Edit</button>
+                    <button onClick={() => onDelete(editedContact.id)}>Delete</button>
                 </div>
             )}
         </div>
